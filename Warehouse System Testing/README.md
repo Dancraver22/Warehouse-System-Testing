@@ -53,7 +53,7 @@ dotnet run
 
 The web application will start and be accessible at:
 - **Local**: https://localhost:5000 (or https://localhost:5001)
-- **Production**: *(Link coming soon)*
+- **Production**: *(Coming soon - Follow the [Azure Deployment Guide](AZURE_DEPLOYMENT_GUIDE.md))*
 
 #### Web Features
 - 🌐 Modern web interface with responsive design
@@ -173,27 +173,44 @@ The system includes built-in protections:
 - ❌ **Prevents negative stock**: Transactions denied if they would result in negative stock
 - ✅ **Auto-status updates**: Stock status updated in real-time
 
-## Web Hosting
+## Web Hosting & Deployment
 
-An **ASP.NET Core MVC** web version is now available! 
+An **ASP.NET Core MVC** web version is now available with automated Azure deployment!
 
-### Local Development
-Run locally with:
+### Quick Start - Local Development
 ```bash
 cd Warehouse.Web
 dotnet run
 ```
-
 Visit: **https://localhost:5000**
 
-### Production Hosting
-The web version can be deployed to:
-- **Azure App Service** (Recommended for .NET apps)
-- **Heroku** (with buildpack)
-- **DigitalOcean** (App Platform)
-- **Any cloud provider** supporting .NET 10
+### Production Deployment - Azure App Service
 
-**Production Link**: *(To be added once deployed)*
+**The recommended and easiest way to deploy:**
+
+1. **[Follow the Azure Deployment Guide](AZURE_DEPLOYMENT_GUIDE.md)** - Step-by-step instructions
+2. **GitHub Actions** - Automatic deployment on every push to `main`
+3. **Free Tier Available** - Start with Azure's free tier, upgrade as you grow
+
+**Benefits:**
+- ✅ Automatic deployment on every GitHub push
+- ✅ .NET 10 native support (no compatibility issues)
+- ✅ Free tier available ($0 startup cost)
+- ✅ Professional hosting infrastructure
+- ✅ Built-in monitoring and scaling
+
+**Deployment Workflow:**
+```
+Push to GitHub → GitHub Actions → Build & Test → Deploy to Azure → Live! 🚀
+```
+
+### Alternative Hosting Options
+
+Other platforms that support .NET:
+- **Railway.app** - Similar to Vercel, supports .NET
+- **Render.com** - Free tier available
+- **DigitalOcean App Platform** - $5-12/month
+- **Heroku** - With buildpack support
 
 ### Web Version Features
 - ✅ Modern, responsive web UI (Bootstrap)
@@ -204,6 +221,7 @@ The web version can be deployed to:
 - ✅ Reset database with safety confirmation
 - ✅ Real-time stock status indicators
 - ✅ Mobile-friendly interface
+- ✅ Automated CI/CD with GitHub Actions
 
 ## Error Handling
 
