@@ -1,0 +1,41 @@
+@model Warehouse.Web.Models.Item
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-body">
+                    <h1 class="card-title text-danger mb-4">⚠️ Delete Product</h1>
+
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Warning:</strong> This action cannot be undone!
+                    </div>
+
+                    <div class="mb-4 p-3 bg-light border rounded">
+                        <p><strong>SKU:</strong> @Model.ID</p>
+                        <p><strong>Product Name:</strong> @Model.Name</p>
+                        <p><strong>Current Stock:</strong> @Model.Stock units</p>
+                        <p><strong>Status:</strong> @Model.Status</p>
+                    </div>
+
+                    <p class="text-muted">
+                        Are you sure you want to permanently delete <strong>@Model.Name (@Model.ID)</strong> and all its data from the warehouse system?
+                    </p>
+
+                    <form method="post" action="@Url.Action("DeleteProductConfirm")">
+                        <input type="hidden" name="id" value="@Model.ID">
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="@Url.Action("Dashboard")" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Yes, Delete This Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

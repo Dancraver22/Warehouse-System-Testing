@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Reset Database";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-body">
+                    <h1 class="card-title text-danger mb-4">🚨 Reset Database</h1>
+
+                    <div class="alert alert-danger" role="alert">
+                        <strong>CRITICAL WARNING!</strong> This will permanently delete <strong>ALL</strong> warehouse data!
+                    </div>
+
+                    <p class="text-muted mb-4">
+                        This action will:
+                    </p>
+                    <ul class="text-muted">
+                        <li>Delete all products from inventory</li>
+                        <li>Clear all stock information</li>
+                        <li>Remove all transaction history</li>
+                        <li>Cannot be recovered</li>
+                    </ul>
+
+                    <form method="post" action="@Url.Action("ResetConfirm")" onsubmit="return confirm('Type CONFIRM below to proceed');">
+                        <div class="mb-3">
+                            <p class="text-danger"><strong>This action cannot be undone. Are you absolutely sure?</strong></p>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="@Url.Action("Dashboard")" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-danger btn-lg">Yes, Reset Everything</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

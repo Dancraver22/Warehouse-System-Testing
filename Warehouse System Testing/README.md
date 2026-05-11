@@ -39,24 +39,30 @@ dotnet build
 
 ## Running the Application
 
-### Console Version (Current)
+### Console Version
 ```bash
 cd "Warehouse System Testing"
 dotnet run
 ```
 
-### Using the Menu
+### Web Version (ASP.NET Core MVC)
+```bash
+cd Warehouse.Web
+dotnet run
 ```
-========================================
-    WAREHOUSE MANAGEMENT SYSTEM
-========================================
-1. Process Scans (Remove Stock)
-2. Insert/Update Product
-3. View Dashboard (Audit)
-4. Delete Specific Item (By SKU)
-5. CLEAR ALL DATA (Reset System)
-6. Exit
-```
+
+The web application will start and be accessible at:
+- **Local**: https://localhost:5000 (or https://localhost:5001)
+- **Production**: *(Link coming soon)*
+
+#### Web Features
+- 🌐 Modern web interface with responsive design
+- 📊 Interactive dashboard for inventory management
+- ➕ Easy product add/update forms
+- 🔍 Quick scan processing interface
+- 🗑️ Safe product deletion with confirmation
+- 🔄 Database reset functionality
+- 📱 Mobile-friendly Bootstrap UI
 
 ## Usage Examples
 
@@ -105,9 +111,31 @@ CREATE TABLE Inventory (
 
 ```
 Warehouse System Testing/
-├── Program.cs                          # Main application code
-├── Warehouse System Testing.csproj     # Project configuration
-└── warehouse.db                        # SQLite database (auto-generated)
+├── Warehouse System Testing/           # Console Application
+│   ├── Program.cs                      # Main console app
+│   ├── Warehouse System Testing.csproj # Project config
+│   └── warehouse.db                    # SQLite database
+│
+├── Warehouse.Web/                      # ASP.NET Core MVC Web App
+│   ├── Controllers/
+│   │   ├── HomeController.cs           # Home page
+│   │   └── InventoryController.cs      # Inventory operations
+│   ├── Models/
+│   │   └── Item.cs                     # Item model
+│   ├── Services/
+│   │   └── InventoryManager.cs         # Core business logic
+│   ├── Views/
+│   │   ├── Inventory/
+│   │   │   ├── Dashboard.cshtml        # Dashboard view
+│   │   │   ├── AddProduct.cshtml       # Add product form
+│   │   │   ├── ProcessScan.cshtml      # Scan processing form
+│   │   │   ├── DeleteProduct.cshtml    # Delete confirmation
+│   │   │   └── Reset.cshtml            # Reset confirmation
+│   │   └── Shared/                     # Layout & shared views
+│   └── Program.cs                      # Web app startup config
+│
+├── README.md                            # This file
+└── .gitignore                          # Git ignore rules
 ```
 
 ## Key Classes
@@ -145,15 +173,37 @@ The system includes built-in protections:
 - ❌ **Prevents negative stock**: Transactions denied if they would result in negative stock
 - ✅ **Auto-status updates**: Stock status updated in real-time
 
-## Web Hosting (Coming Soon)
+## Web Hosting
 
-An **ASP.NET Core** web version is in development! This will provide:
-- 🌐 Web-based UI accessible from any browser
-- 📊 Interactive dashboard
-- 🔌 REST API endpoints
-- ☁️ Cloud deployment support
+An **ASP.NET Core MVC** web version is now available! 
 
-**Hosting Link**: *(To be added)*
+### Local Development
+Run locally with:
+```bash
+cd Warehouse.Web
+dotnet run
+```
+
+Visit: **https://localhost:5000**
+
+### Production Hosting
+The web version can be deployed to:
+- **Azure App Service** (Recommended for .NET apps)
+- **Heroku** (with buildpack)
+- **DigitalOcean** (App Platform)
+- **Any cloud provider** supporting .NET 10
+
+**Production Link**: *(To be added once deployed)*
+
+### Web Version Features
+- ✅ Modern, responsive web UI (Bootstrap)
+- ✅ Dashboard for inventory overview
+- ✅ Add/Update products via forms
+- ✅ Process stock scans
+- ✅ Delete products with confirmation
+- ✅ Reset database with safety confirmation
+- ✅ Real-time stock status indicators
+- ✅ Mobile-friendly interface
 
 ## Error Handling
 
@@ -202,6 +252,14 @@ For questions or feedback, please open an issue on GitHub:
 https://github.com/Dancraver22/Warehouse-System-Testing/issues
 
 ## Changelog
+
+### Version 2.0.0 (Current)
+- **NEW**: ASP.NET Core MVC web application
+- **NEW**: Modern web UI with Bootstrap
+- **NEW**: Interactive dashboard with real-time status
+- **IMPROVED**: Shared InventoryManager service between console and web
+- **IMPROVED**: Better user experience with confirmations
+- Console and web versions now share core logic
 
 ### Version 1.0.0
 - Initial release
